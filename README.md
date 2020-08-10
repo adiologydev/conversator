@@ -1,5 +1,7 @@
 <div align="center">
 
+[![OwO](https://i.imgur.com/65ffyZ3.png)](https://i.imgur.com/65ffyZ3.png)
+
 # Conversator
 Simple Discord Bot that uses Cleverbot to Increase Engagement
 
