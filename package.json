@@ -12,12 +12,13 @@
     "test": "eslint --ext ts src",
     "build": "tsc -b src",
     "watch": "tsc -b src -w",
-    "clean": "tsc -b src --clean"
+    "clean": "tsc -b src --clean",
+    "start": "node dist/index"
   },
   "dependencies": {
+    "@sapphire/time-utilities": "^1.1.1",
     "chainfetch": "^1.2.2",
-    "discord.js": "github:discordjs/discord.js#fe7df708e44e0280dfaf0f8e457b154781bb5140",
-    "klasa": "github:dirigeants/klasa#settings",
+    "discord.js": "^12.4.1",
     "node-fetch": "^2.6.0"
   },
   "devDependencies": {

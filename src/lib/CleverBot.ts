@@ -6,6 +6,11 @@ const md5 = (contents: string) => crypto.createHash("md5").update(contents).dige
 export default class CleverBot {
     private cookies!: string | null;
 
+    public constructor() {
+      // eslint-disable-next-line no-void,@typescript-eslint/no-empty-function,no-empty-function
+      void this.init().then(() => {});
+    }
+
     async init(): Promise<void> {
         if (this.cookies) return;
         await get("https://www.cleverbot.com/").then(res => {
@@ -27,6 +32,8 @@ export default class CleverBot {
 
     private handleContext(context: Array<string>) {
         const cloned = context.slice().reverse();
-        for (let i = 0; i < cloned.length; i++) return `&vText${i + 2}=${escape(cloned[i]).includes("%u") ? escape(escape(cloned[i]).replace(/%u/g, "|")) : escape(cloned[i])}`;
+        const contexts = [];
+        for (let i = 0; i < cloned.length; i++) contexts.push(`&vText${i + 2}=${escape(cloned[i]).includes("%u") ? escape(escape(cloned[i]).replace(/%u/g, "|")) : escape(cloned[i])}`);
+        return context.join("");
     }
 }
