@@ -1,5 +1,6 @@
 import { Command } from "../lib/structures/Command";
 import { Message } from "discord.js";
+import { CommandOptions } from "typings";
 
 export default class ConversatorCommand extends Command {
 

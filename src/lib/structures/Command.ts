@@ -1,4 +1,5 @@
 import { Message } from "discord.js";
+import { CommandOptions } from "typings";
 
 export abstract class Command {
 

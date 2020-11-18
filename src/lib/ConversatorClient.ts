@@ -4,11 +4,13 @@ import CleverBot from "./CleverBot";
 import { readdirSync } from "fs";
 import { join } from "path";
 import { Timestamp } from "@sapphire/time-utilities";
+import { PrismaClient } from "@prisma/client";
 
 export class ConversatorClient extends Client {
     public commands: Collection<string, any>;
     public monitors: Collection<string, any>;
     public clever: CleverBot;
+    public prisma: PrismaClient;
 
     constructor(options?: ClientOptions) {
         super(options);
@@ -16,6 +18,8 @@ export class ConversatorClient extends Client {
         this.commands = new Collection();
         this.monitors = new Collection();
         this.clever = new CleverBot();
+
+        this.prisma = new PrismaClient();
     }
 
     public async initCommands() {
@@ -45,6 +49,8 @@ export class ConversatorClient extends Client {
     public async start(token: string) {
         await this.initCommands();
         await this.initMonitors();
+
+        await this.prisma.$connect();
 
         return super.login(token);
     }
